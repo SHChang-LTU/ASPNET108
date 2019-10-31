@@ -16,5 +16,24 @@ namespace ASPNET108.Models
         public byte DurationInMonths { get; set; }
 
         public byte DiscountRate { get; set; }
+
+        public string GetDiscountName()
+        {
+            var discount = "";
+            if (DiscountRate == 0)
+            {
+                discount = "無折扣";
+            }
+            else if (DiscountRate == 10)
+            {
+                discount = "九折";
+            }
+            else if (DiscountRate == 15)
+            {
+                discount = "八五折";
+            }
+
+            return discount;
+        }
     }
 }

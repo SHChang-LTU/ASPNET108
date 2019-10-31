@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -157,9 +160,6 @@
     <Reference Include="Microsoft.Owin.Security.OAuth">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -188,6 +189,18 @@
     <Compile Include="Migrations\201910240706279_PopulateMembershipType.cs" />
     <Compile Include="Migrations\201910240706279_PopulateMembershipType.Designer.cs">
       <DependentUpon>201910240706279_PopulateMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910310616334_ChangeCustomerName.cs" />
+    <Compile Include="Migrations\201910310616334_ChangeCustomerName.Designer.cs">
+      <DependentUpon>201910310616334_ChangeCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910310618446_ChangeMovieName.cs" />
+    <Compile Include="Migrations\201910310618446_ChangeMovieName.Designer.cs">
+      <DependentUpon>201910310618446_ChangeMovieName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910310643107_AddPhoneToCustomer.cs" />
+    <Compile Include="Migrations\201910310643107_AddPhoneToCustomer.Designer.cs">
+      <DependentUpon>201910310643107_AddPhoneToCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -256,6 +269,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,6 +300,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910240706279_PopulateMembershipType.resx">
       <DependentUpon>201910240706279_PopulateMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910310616334_ChangeCustomerName.resx">
+      <DependentUpon>201910310616334_ChangeCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910310618446_ChangeMovieName.resx">
+      <DependentUpon>201910310618446_ChangeMovieName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910310643107_AddPhoneToCustomer.resx">
+      <DependentUpon>201910310643107_AddPhoneToCustomer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

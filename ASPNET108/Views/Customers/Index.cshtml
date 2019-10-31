@@ -1,0 +1,19 @@
+﻿@using ASPNET108.Models
+@model IEnumerable<Customer>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>顧客名單</h2>
+
+<ul>
+    
+    @foreach (var customer in Model)
+    {
+        <li>
+            @Html.ActionLink(customer.Name, "Details", new {id=customer.Id})
+        </li>
+    }
+
+</ul>
