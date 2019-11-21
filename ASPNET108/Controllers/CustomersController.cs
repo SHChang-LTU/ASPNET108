@@ -38,7 +38,7 @@ namespace ASPNET108.Controllers
         }
 
 
-        public ActionResult Details(int id)
+        public ActionResult Edit(int id)
         {
             var customer = _context.Customers
                 .Include(c=>c.MembershipType)
@@ -47,7 +47,22 @@ namespace ASPNET108.Controllers
             if (customer == null)
                 return HttpNotFound();
 
-            return View(customer);
+            var viewModel = new CustomerFormViewModel
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+
+            return View("CustomerForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Customer customer)
+        {
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Customers");
         }
     }
 }
