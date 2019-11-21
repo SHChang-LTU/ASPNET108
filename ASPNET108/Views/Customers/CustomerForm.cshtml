@@ -1,31 +1,75 @@
-﻿@model ASPNET108.Models.Customer
+﻿@model  Vidly.ViewModels.CustomerFormViewModel
 
-    @{
-        ViewBag.Title = "title";
-    }
+@{
+    ViewBag.Title = "title";
+}
 
-    <h2>請輸入顧客資料</h2>
+<h2>請輸入顧客資料</h2>
 
-@using (Html.BeginForm("Create", "Customers"))
+@using (Html.BeginForm("Save", "Customers"))
 {
-    <div class="form-group" >
-        
-        @Html.LabelFor(m=>m.Name)
-        @Html.TextBoxFor(m=>m.Name)
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control", placeholder = "請輸入姓名" })
 
     </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Customer.BirthDate)
+
+        @Html.TextBoxFor(m => m.Customer.BirthDate,
+            "{0: dd MMM yyyy}",
+            new {@class = "form-control",
+                placeholder = "格式範例: 4 Mar 2000 或是 2000-3-4"})
+
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Customer.MembershipType.Name)
+
+        @Html.DropDownListFor(
+            m=>m.Customer.MembershipTypeId,
+            new SelectList(
+                Model.MembershipTypes,
+                "Id",
+                "Name"
+                ),
+            "選擇會員等級",
+            new {@class="form-control"})
+    </div>
+
+    <div class="checkbox">
+        <label>
+            @Html.CheckBoxFor(m =>
+                m.Customer.IsSubscribedToNewsLetter) 打勾訂閱電子報
+        </label>
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Customer.Credit)
+
+        @Html.TextBoxFor(m => m.Customer.Credit,
+            new {@class = "form-control",
+                placeholder = "會員初始點數"})
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">送出</button>
 
 }
 
 
-<form action="/Customers/Save" method="post">
-        姓名: <input type="text" name="name" /> <br />
-        生日: <input type="text" name="birthDate" /> <br />
-        訂閱電子報: <input type="checkbox" name="isSubcribedToNewsLetter" /><br />
-        會員等級: <input type="text" name="membershipType" /> <br />
-        <br />
-        <input type="submit" name="submit" value="儲存" />
-
-    </form>
+@*<form action="/Customers/Save" method="post">
+            姓名: <input type="text" name="name" /> <br />
+            生日: <input type="text" name="birthDate" /> <br />
+            訂閱電子報: <input type="checkbox" name="isSubcribedToNewsLetter" /><br />
+            會員等級: <input type="text" name="membershipType" /> <br />
+            <br />
+            <input type="submit" name="submit" value="儲存" />
+    </form>*@
 
 

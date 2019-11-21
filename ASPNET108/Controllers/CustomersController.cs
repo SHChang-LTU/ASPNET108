@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ASPNET108.Models;
+using Vidly.ViewModels;
 
 namespace ASPNET108.Controllers
 {
@@ -27,9 +28,13 @@ namespace ASPNET108.Controllers
 
         public ActionResult New()
         {
+            var viewModel = new CustomerFormViewModel
+            {
+                MembershipTypes = _context.MembershipTypes.ToList(),
+                Customer = new Customer()
+            };
 
-
-            return View("CustomerForm");
+            return View("CustomerForm", viewModel);
         }
 
 
