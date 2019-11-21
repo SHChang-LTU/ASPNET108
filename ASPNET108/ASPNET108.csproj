@@ -202,6 +202,14 @@
     <Compile Include="Migrations\201910310643107_AddPhoneToCustomer.Designer.cs">
       <DependentUpon>201910310643107_AddPhoneToCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911210523246_AddCreditAndBirthdateToCustomers.cs" />
+    <Compile Include="Migrations\201911210523246_AddCreditAndBirthdateToCustomers.Designer.cs">
+      <DependentUpon>201911210523246_AddCreditAndBirthdateToCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911210526415_AddBirthdateNullableToCustomers.cs" />
+    <Compile Include="Migrations\201911210526415_AddBirthdateNullableToCustomers.Designer.cs">
+      <DependentUpon>201911210526415_AddBirthdateNullableToCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -271,6 +279,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\CustomerForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -309,6 +318,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910310643107_AddPhoneToCustomer.resx">
       <DependentUpon>201910310643107_AddPhoneToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911210523246_AddCreditAndBirthdateToCustomers.resx">
+      <DependentUpon>201911210523246_AddCreditAndBirthdateToCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911210526415_AddBirthdateNullableToCustomers.resx">
+      <DependentUpon>201911210526415_AddBirthdateNullableToCustomers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

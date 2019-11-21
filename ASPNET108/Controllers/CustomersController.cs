@@ -20,16 +20,18 @@ namespace ASPNET108.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            var customers = GetCustomers();
+            var customers = _context.Customers.Include(c=>c.MembershipType).ToList();
 
             return View(customers);
         }
 
-        private IEnumerable<Customer> GetCustomers()
+        public ActionResult New()
         {
-            var customers = _context.Customers.ToList();
-            return customers;
+
+
+            return View("CustomerForm");
         }
+
 
         public ActionResult Details(int id)
         {

@@ -5,15 +5,45 @@
     ViewBag.Title = "title";
 }
 
-<h2>顧客名單</h2>
+<div>
+    <h1>客戶清單</h1>
 
-<ul>
-    
-    @foreach (var customer in Model)
-    {
-        <li>
-            @Html.ActionLink(customer.Name, "Details", new {id=customer.Id})
-        </li>
-    }
+    <a href="/Customers/New" class="btn btn-primary" role="button">新增客戶</a> <br /><br />
 
-</ul>
+    <table id="customers" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>租片</th>
+                <th>會員等級</th>
+                <th>刪除會員</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(
+                            customer.Name,
+                            "Edit",
+                            "Customers",
+                            new {id = customer.Id},
+                            null)
+                    </td>
+                    <td>
+                        <button data-customer-id="@customer.Id" class="btn-link js-rent">租片</button>
+                    </td>
+                    <td>
+                        @customer.MembershipType.Name
+                    </td>
+                    <td>
+                        <button data-customer-id="@customer.Id" class="btn-link js-delete">刪除</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

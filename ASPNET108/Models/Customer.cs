@@ -12,6 +12,7 @@ namespace ASPNET108.Models
 
         [Required]
         [StringLength(255)]
+        [Display(Name = "姓名")]
         public string Name { get; set; }
 
         public bool IsSubscribedToNewsLetter { get; set; }
@@ -20,6 +21,9 @@ namespace ASPNET108.Models
 
         public byte MembershipTypeId { get; set; }
 
-        public string Phone { get; set; }
+        public DateTime? BirthDate { get; set; }
+
+        public short Credit { get; set; }
+
     }
 }
