@@ -59,7 +59,28 @@ namespace ASPNET108.Controllers
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
-            _context.Customers.Add(customer);
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                TryUpdateModel(customer);
+
+                _context.Entry(customer).State = EntityState.Modified;
+
+
+                //var customerInDb =
+                //    _context.Customers.Single(c => c.Id == customer.Id);
+
+                //customerInDb.Name = customer.Name;
+                //customerInDb.BirthDate = customer.BirthDate;
+                //customerInDb.IsSubscribedToNewsLetter = customer.IsSubscribedToNewsLetter;
+                //customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                //customerInDb.Credit = customer.Credit;
+
+            }
+
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Customers");
