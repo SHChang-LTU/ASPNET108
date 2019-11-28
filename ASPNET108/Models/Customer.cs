@@ -10,7 +10,7 @@ namespace ASPNET108.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "顧客姓名不能空白")]
         [StringLength(255)]
         [Display(Name = "姓名")]
         public string Name { get; set; }
@@ -20,14 +20,14 @@ namespace ASPNET108.Models
         [Display(Name = "會員等級")]
         public MembershipType MembershipType { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "必須選擇會員等級")]
         public byte MembershipTypeId { get; set; }
 
         [Display(Name = "生日")]
         public DateTime? BirthDate { get; set; }
 
         [Display(Name = "會員初始點數")]
-        [Range(0,999)]
+        [Range(0,999,ErrorMessage = "輸入值必須在0~999之間")]
         public short Credit { get; set; }
 
     }
