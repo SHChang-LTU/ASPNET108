@@ -20,12 +20,14 @@ namespace ASPNET108.Models
         [Display(Name = "會員等級")]
         public MembershipType MembershipType { get; set; }
 
+        [Required]
         public byte MembershipTypeId { get; set; }
 
         [Display(Name = "生日")]
         public DateTime? BirthDate { get; set; }
 
         [Display(Name = "會員初始點數")]
+        [Range(0,999)]
         public short Credit { get; set; }
 
     }

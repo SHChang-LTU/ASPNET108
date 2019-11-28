@@ -12,7 +12,8 @@
 
         @Html.LabelFor(m => m.Customer.Name)
         @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control", placeholder = "請輸入姓名" })
-
+        
+        @Html.ValidationMessageFor(m=>m.Customer.Name)
     </div>
 
     <div class="form-group">
@@ -24,6 +25,7 @@
             new {@class = "form-control",
                 placeholder = "格式範例: 4 Mar 2000 或是 2000-3-4"})
 
+        @Html.ValidationMessageFor(m => m.Customer.BirthDate)
     </div>
 
     <div class="form-group">
@@ -39,6 +41,8 @@
                 ),
             "選擇會員等級",
             new {@class="form-control"})
+
+        @Html.ValidationMessageFor(m => m.Customer.MembershipType.Name)
     </div>
 
     <div class="checkbox">
@@ -55,6 +59,8 @@
         @Html.TextBoxFor(m => m.Customer.Credit,
             new {@class = "form-control",
                 placeholder = "會員初始點數"})
+
+        @Html.ValidationMessageFor(m => m.Customer.Credit)
 
     </div>
 
