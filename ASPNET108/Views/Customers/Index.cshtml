@@ -47,3 +47,40 @@
         </tbody>
     </table>
 </div>
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+
+            $("#customers").DataTable({
+                language:
+                {
+                    "url":"/localization/Chinese.json"
+                }
+            });
+
+            $(".js-delete").on("click",
+                function() {
+                    if (confirm("確認要刪除嗎?")) {
+                        var button = $(this);
+
+                        $.ajax({
+                            url: "/customers/delete/" + button.attr("data-customer-id"),
+                            method: "post",
+                            success: function() {
+                                button.parents("tr").remove();
+                                location.reload();
+                            },
+                            fail: function() {
+                                alert("執行失敗....");
+                            }
+                        });
+                    }
+                }
+            );
+        });
+    </script>
+
+}
