@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Save", "Customers"))
 {
 
-    @Html.ValidationSummary(false,"請修正下列錯誤:")
+    @Html.ValidationSummary(false, "請修正下列錯誤:")
 
     <div class="form-group">
 
@@ -82,4 +82,8 @@
             <input type="submit" name="submit" value="儲存" />
     </form>*@
 
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
