@@ -171,6 +171,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -210,14 +211,24 @@
     <Compile Include="Migrations\201911210526415_AddBirthdateNullableToCustomers.Designer.cs">
       <DependentUpon>201911210526415_AddBirthdateNullableToCustomers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912120637233_CreateMovieAndGenreTable.cs" />
+    <Compile Include="Migrations\201912120637233_CreateMovieAndGenreTable.Designer.cs">
+      <DependentUpon>201912120637233_CreateMovieAndGenreTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912120639373_CreateMovieAndGenreTable1.cs" />
+    <Compile Include="Migrations\201912120639373_CreateMovieAndGenreTable1.Designer.cs">
+      <DependentUpon>201912120639373_CreateMovieAndGenreTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
@@ -455,6 +466,7 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -499,6 +511,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911210526415_AddBirthdateNullableToCustomers.resx">
       <DependentUpon>201911210526415_AddBirthdateNullableToCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912120637233_CreateMovieAndGenreTable.resx">
+      <DependentUpon>201912120637233_CreateMovieAndGenreTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912120639373_CreateMovieAndGenreTable1.resx">
+      <DependentUpon>201912120639373_CreateMovieAndGenreTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

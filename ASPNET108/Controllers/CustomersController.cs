@@ -9,6 +9,7 @@ using Vidly.ViewModels;
 
 namespace ASPNET108.Controllers
 {
+    [Authorize(Roles = RoleName.Admin)]
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext _context;
