@@ -12,12 +12,15 @@ namespace ASPNET108.Models
 
         [Required]
         [StringLength(255)]
+        [Display(Name = "片名")]
         public string Name { get; set; }
 
-        public DateTime ReleasedDate { get; set; }
+        [Display(Name = "上映日期")]
+        public DateTime? ReleasedDate { get; set; }
 
         public DateTime DateAdded { get; set; }
 
+        [Display(Name = "庫存量")]
         public short NumberInStocks { get; set; }
 
         public Genre Genre { get; set; }
