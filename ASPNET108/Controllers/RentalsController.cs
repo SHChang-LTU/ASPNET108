@@ -82,5 +82,43 @@ namespace ASPNET108.Controllers
 
             return RedirectToAction("Index", "Movies");
         }
+
+        public ActionResult RentMoviesInCart(int id)
+        {
+
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null)
+                return HttpNotFound("Customer not found for id=" + id);
+
+            var moviesInCart = Session["cart"] as Dictionary<int, string>;
+
+            if (moviesInCart == null)
+                return HttpNotFound("No movies in cart!");
+
+
+            foreach (KeyValuePair<int, string> item in moviesInCart)
+            {
+                var movie = _context.Movies.Single(m => m.Id == item.Key);
+
+                var rental = new Rental
+                {
+                    Customer = customer, //customer is the same one
+                    Movie = movie, //movie changes in loop
+
+                    DateRented = DateTime.Now
+                };
+
+                _context.Rentals.Add(rental);
+            }
+
+
+            _context.SaveChanges();
+
+            Session["cart"] = null; // clear the session
+
+            return RedirectToAction("New", "Rentals", new { id = id });
+
+        }
     }
 }
