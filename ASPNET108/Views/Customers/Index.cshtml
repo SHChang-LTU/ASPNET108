@@ -54,6 +54,13 @@
 
         $(document).ready(function () {
 
+
+            $("#customers").on("click",
+                ".js-rent",
+                function () {
+                    window.location.href = "/rentals/new/" + $(this).attr("data-customer-id");
+                });
+
             $("#customers").DataTable({
                 language:
                 {

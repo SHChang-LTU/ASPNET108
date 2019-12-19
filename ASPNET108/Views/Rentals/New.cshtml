@@ -1,0 +1,77 @@
+﻿@model ASPNET108.ViewModels.RentalViewModel
+
+@{
+    ViewBag.Title = "客戶租片";
+}
+
+<h2>客戶租片功能</h2>
+
+@{
+    var customerAge = DateTime.Now.Year - Model.Customer.BirthDate.Value.Year;
+
+    var moviesInCart = Session["cart"] as Dictionary<int, string>;
+}
+
+<div>
+    <h3>客戶資訊:</h3>
+    <ul>
+        <li>
+            姓名: @Model.Customer.Name
+        </li>
+
+        <li>
+            年齡: @customerAge
+        </li>
+        <li>
+            會員等級: @Model.Customer.MembershipType.Name
+        </li>
+        <li>
+            剩餘點數: @Model.Customer.Credit
+        </li>
+
+        @if (Model.CustomerMovies.Count > 0)
+        {
+            <li>已租影片清單
+                <ol>
+                    @foreach (var item in Model.CustomerMovies)
+                    {
+                        <li>
+                            @item.Name
+                        </li>
+                    }
+                </ol>
+            </li>
+        }
+    </ul>
+
+    <h3>購物車中影片清單</h3>
+    @if (moviesInCart != null)
+    {
+        foreach (var item in moviesInCart)
+        {
+            <ul>
+                <li>@item.Value</li>
+            </ul>
+        }
+
+        <button data-customer-id="@Model.Customer.Id" class="btn btn-success btn-sm js-moviesInCart">租借購物車中影片</button>
+
+    }
+
+
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $(".js-moviesInCart").on("click",
+                function() {
+                    window.location.href = "/rentals/RentMoviesInCart/" + $(this).attr("data-customer-id");
+                }
+            );
+
+        });
+    </script>
+}

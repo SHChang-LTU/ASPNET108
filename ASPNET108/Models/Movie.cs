@@ -26,5 +26,7 @@ namespace ASPNET108.Models
         public Genre Genre { get; set; }
 
         public int GenreId { get; set; }
+
+        public List<Rental> CustomerMovies { get; set; }
     }
 }

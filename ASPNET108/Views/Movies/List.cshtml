@@ -2,6 +2,17 @@
 
 @{
     ViewBag.Title = "title";
+
+    var moviesInCart = Session["cart"] as Dictionary<int,string>;
+
+    var mIdInCart = new List<int>();
+
+    if (moviesInCart != null) {
+        foreach (KeyValuePair<int, string> item in moviesInCart)
+        {
+            mIdInCart.Add(item.Key);
+        }
+    }
 }
 
 
@@ -14,6 +25,7 @@
         <thead>
             <tr>
                 <th>片名</th>
+                <th>加入租片清單</th>
                 <th>類型</th>
                 <th>庫存量</th>
                 <th>刪除影片</th>
@@ -32,6 +44,17 @@
                             "Movies",
                             new {id = movie.Id},
                             null)
+                        
+                        @if (mIdInCart.Contains(movie.Id))
+                        {
+                            <img src="~/Content/images/clicked.png" alt="選取">
+                            
+                        }
+                    </td>
+                    <td>
+                        <button data-movie-id="@movie.Id" class="btn btn-success btn-sm js-add-movie">加入</button>
+                        &nbsp;
+                        <button data-movie-id="@movie.Id" class="btn btn-danger btn-sm js-remove-movie">移除</button>
                     </td>
                     <td>
                         @movie.Genre.Name
@@ -54,6 +77,21 @@
     <script>
 
         $(document).ready(function () {
+
+            $("#movies").on("click",
+                ".js-add-movie",
+                function() {
+                    window.location.href = "/rentals/cartAdd/" + $(this).attr("data-movie-id");
+                }
+            );
+
+            $("#movies").on("click",
+                ".js-remove-movie",
+                function() {
+                    window.location.href = "/rentals/cartRemove/" + $(this).attr("data-movie-id");
+                }
+            );
+
 
             $("#customers").DataTable({
                 language:

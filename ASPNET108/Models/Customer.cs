@@ -30,5 +30,7 @@ namespace ASPNET108.Models
         [Range(0,999,ErrorMessage = "輸入值必須在0~999之間")]
         public short Credit { get; set; }
 
+        public List<Rental> CustomerMovies { get; set; }
+
     }
 }
