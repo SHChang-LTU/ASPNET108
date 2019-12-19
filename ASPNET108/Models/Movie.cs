@@ -18,7 +18,7 @@ namespace ASPNET108.Models
         [Display(Name = "上映日期")]
         public DateTime? ReleasedDate { get; set; }
 
-        public DateTime DateAdded { get; set; }
+        public DateTime? DateAdded { get; set; }
 
         [Display(Name = "庫存量")]
         public short NumberInStocks { get; set; }

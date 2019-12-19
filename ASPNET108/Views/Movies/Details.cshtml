@@ -1,0 +1,13 @@
+﻿@model ASPNET108.Models.Movie
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>電影詳細</h2>
+
+<ul>
+    <li>片名:@Model.Name</li>
+    <li>類型:@Model.Genre.Name</li>
+    <li>庫存量: @Model.NumberInStocks</li>
+</ul>

@@ -6,23 +6,33 @@ using System.Web;
 using System.Web.Mvc;
 using ASPNET108.Models;
 using ASPNET108.ViewModels;
+using Microsoft.Owin.Security.Provider;
 
 namespace ASPNET108.Controllers
 {
+    [Authorize(Roles = RoleName.Admin)]
     public class MoviesController : Controller
     {
         private ApplicationDbContext _context;
         public MoviesController()
         {
             _context = new ApplicationDbContext();
-        }    
+        }
 
         // GET: Movies
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var movies = _context.Movies.Include(m => m.Genre).ToList();
 
-            return View(movies);
+            if (User.IsInRole(RoleName.Admin))
+            {
+                return View("List", movies);
+            }
+            else
+            {
+                return View("ReadOnlyList", movies);
+            }
 
         }
 
@@ -32,6 +42,39 @@ namespace ASPNET108.Controllers
             {
                 Genres = _context.Genres.ToList(),
                 Movie = new Movie()
+            };
+
+            return View("MovieForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
+                return HttpNotFound();
+
+            _context.Movies.Remove(movie);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Movies");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var movie = _context.Movies
+                .Include(m => m.Genre)
+                .SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
+                return HttpNotFound();
+
+            var viewModel = new MovieFormViewModel
+            {
+                Movie = movie,
+                Genres = _context.Genres.ToList()
             };
 
             return View("MovieForm", viewModel);
@@ -68,6 +111,20 @@ namespace ASPNET108.Controllers
 
             return RedirectToAction("Index", "Movies");
         }
+
+
+        [AllowAnonymous]
+        public ActionResult Details(int id)
+        {
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
+                return HttpNotFound();
+
+            return View(movie);
+        }
     }
+
+
 
 }

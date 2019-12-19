@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201912120736306_ChangeMovieReleasedDate.Designer.cs">
       <DependentUpon>201912120736306_ChangeMovieReleasedDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912190537447_ChangeMovieAddedDateToNullable.cs" />
+    <Compile Include="Migrations\201912190537447_ChangeMovieAddedDateToNullable.Designer.cs">
+      <DependentUpon>201912190537447_ChangeMovieAddedDateToNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -471,8 +475,10 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
-    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Movies\List.cshtml" />
     <Content Include="Views\Movies\MovieForm.cshtml" />
+    <Content Include="Views\Movies\ReadOnlyList.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -526,6 +532,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912120736306_ChangeMovieReleasedDate.resx">
       <DependentUpon>201912120736306_ChangeMovieReleasedDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912190537447_ChangeMovieAddedDateToNullable.resx">
+      <DependentUpon>201912190537447_ChangeMovieAddedDateToNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
